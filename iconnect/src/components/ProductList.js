@@ -1,5 +1,8 @@
 import React from 'react';
 import './ProductList.css';
+import React, { useEffect, useState } from 'react';
+import './ProductList.css';
+import { fetchProducts } from '../firebaseService';
 
 const products = [
   { id: 1, name: 'Product 1', price: 10000 },
@@ -22,6 +25,16 @@ function ProductCard({ product }) {
 }
 
 function ProductList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      const productsList = await fetchProducts();
+      setProducts(productsList);
+    };
+    loadProducts();
+  }, []);
+
   return (
     <div className="product-list">
       {products.map((product) => (
