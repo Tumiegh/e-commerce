@@ -1,0 +1,27 @@
+/* PurchaseHistory.css */
+.purchase-history {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.purchase-history h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.purchase {
+  margin-bottom: 20px;
+}
+
+.purchase h3 {
+  margin-top: 10px;
+}
+
+.purchase ul {
+  list-style: none;
+  padding: 0;
+}
+
+.purchase li {
+  padding: 5px 0;
+}

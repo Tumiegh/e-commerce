@@ -10,16 +10,37 @@ function Navbar() {
       </div>
       <ul className="navbar-links">
         <li>
-          <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
+          <NavLink 
+            to="/" 
+            end 
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/products" activeClassName="active-link">Products</NavLink>
+          <NavLink 
+            to="/products" 
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Products
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" activeClassName="active-link">Contact</NavLink>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Contact
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/cart" activeClassName="active-link">Cart</NavLink>
+          <NavLink 
+            to="/cart" 
+            className={({ isActive }) => isActive ? 'active-link' : undefined}
+          >
+            Cart
+          </NavLink>
         </li>
       </ul>
     </nav>
@@ -27,4 +48,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
 

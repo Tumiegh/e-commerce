@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import './Cart.css'; // Import a CSS file for styling
+import './Cart.css'; // Import CSS for styling
 
 function Cart() {
   const { cartItems, removeFromCart } = useContext(CartContext);
@@ -13,13 +13,13 @@ function Cart() {
       {cartItems.length === 0 ? (
         <p className="empty-cart-message">Your cart is empty.</p>
       ) : (
-        <>
-          {cartItems.map(item => (
+        <div>
+          {cartItems.map((item) => (
             <div className="cart-item" key={item.id}>
               <h3>{item.name}</h3>
               <p>Price: R{item.price.toFixed(2)}</p>
-              <button 
-                className="remove-button" 
+              <button
+                className="remove-button"
                 onClick={() => removeFromCart(item.id)}
               >
                 Remove
@@ -29,7 +29,7 @@ function Cart() {
           <div className="cart-total">
             <h3>Total: R{totalPrice.toFixed(2)}</h3>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
