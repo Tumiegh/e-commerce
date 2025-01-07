@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import './ProductList.css';
 import { CartContext } from '../contexts/CartContext';
 
-// Sample Hardcoded Product Data (you can remove this once Firebase is connected)
+// Sample Hardcoded Product Data
 const sampleProducts = [
   {
     id: '1',
@@ -34,11 +34,24 @@ const sampleProducts = [
   },
 ];
 
-// ProductCard Component for displaying each product
+// ProductCard Component
 function ProductCard({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
+  const [isInCart, setIsInCart] = useState(false);
 
-  // Format price to South African Rands
+  useEffect(() => {
+    const productInCart = cartItems.find(item => item.id === product.id);
+    setIsInCart(!!productInCart);
+  }, [cartItems, product.id]);
+
+  const handleCartAction = () => {
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
   const formattedPrice = new Intl.NumberFormat('en-ZA', {
     style: 'currency',
     currency: 'ZAR',
@@ -50,31 +63,27 @@ function ProductCard({ product }) {
       <h3>{product.name}</h3>
       <p>{formattedPrice}</p>
       <p>{product.description}</p>
-      <button className="add-to-cart-button" onClick={() => addToCart(product)}>
-        Add to Cart
+      <button
+        className={`cart-button ${isInCart ? 'in-cart' : ''}`}
+        onClick={handleCartAction}
+      >
+        {isInCart ? 'Remove from Cart' : 'Add to Cart'}
       </button>
     </div>
   );
 }
 
-// ProductList Component to fetch and display all products
+// ProductList Component
 function ProductList() {
-  const [productList, setProductList] = useState([]); // State for product list
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch products when the component mounts
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        // Simulate fetching from Firebase or use sample data
-        // const productsFromDB = await fetchProducts(); // Uncomment if using Firebase
-        const productsFromDB = sampleProducts; // Using hardcoded data for now
-        if (productsFromDB && Array.isArray(productsFromDB)) {
-          setProductList(productsFromDB);
-        } else {
-          throw new Error('Invalid data format');
-        }
+        const productsFromDB = sampleProducts;
+        setProductList(productsFromDB);
       } catch (err) {
         setError('Failed to load products. Please try again later.');
       } finally {
@@ -83,9 +92,8 @@ function ProductList() {
     };
 
     loadProducts();
-  }, []); // Empty dependency array to run once when the component mounts
+  }, []);
 
-  // Loading or error message
   if (loading) {
     return <p className="loading-message">Loading products...</p>;
   }

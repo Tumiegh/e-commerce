@@ -16,28 +16,38 @@ import './App.css';
 function App() {
   return (
     <CartProvider>
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HeroSection />
-              <About />
-              <ProductList />
-              <Reviews />
-              <AuthForm />
-              <ContactForm />
-            </>
-          } />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/purchase-history" element={<PurchaseHistory />} /> {/* Route for PurchaseHistory */}
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <HeroSection />
+                <section id="about">
+                  <About />
+                </section>
+                <section id="products">
+                  <ProductList />
+                </section>
+                <section id="reviews">
+                  <Reviews />
+                </section>
+                <AuthForm />
+                <section id="contact">
+                  <ContactForm />
+                </section>
+              </>
+            } />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/purchase-history" element={<PurchaseHistory />} /> {/* Route for PurchaseHistory */}
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
     </CartProvider>
   );
 }
 
 export default App;
+
+

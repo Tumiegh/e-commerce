@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
@@ -10,37 +10,19 @@ function Navbar() {
       </div>
       <ul className="navbar-links">
         <li>
-          <NavLink 
-            to="/" 
-            end 
-            className={({ isActive }) => isActive ? 'active-link' : undefined}
-          >
-            Home
-          </NavLink>
+          <a href="#about">Home</a> {/* Updated to anchor tag with href */}
         </li>
         <li>
-          <NavLink 
-            to="/products" 
-            className={({ isActive }) => isActive ? 'active-link' : undefined}
-          >
-            Products
-          </NavLink>
+          <a href="#products">Products</a> {/* Updated to anchor tag with href */}
         </li>
         <li>
-          <NavLink 
-            to="/contact" 
-            className={({ isActive }) => isActive ? 'active-link' : undefined}
-          >
-            Contact
-          </NavLink>
+          <a href="#reviews">Reviews</a> {/* Updated to anchor tag with href */}
         </li>
         <li>
-          <NavLink 
-            to="/cart" 
-            className={({ isActive }) => isActive ? 'active-link' : undefined}
-          >
-            Cart
-          </NavLink>
+          <a href="#contact">Contact</a> {/* Updated to anchor tag with href */}
+        </li>
+        <li>
+          <Link to="/cart">Cart</Link>
         </li>
       </ul>
     </nav>
@@ -48,5 +30,7 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
 
 

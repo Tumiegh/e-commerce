@@ -13,3 +13,20 @@
 .hero-section p {
   font-size: 1.2rem;
 }
+
+.hero-section {
+  height: 100vh;
+  background-image: url();
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.her-content {
+  background-color: rgb(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
