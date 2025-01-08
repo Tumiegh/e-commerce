@@ -2,11 +2,13 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: white;
+    border-radius: 155px;
 }
 
 .reviews-list {
-    width: 60%;
+    width: 58%;
+    margin-left: 62px;
 }
 
 .review-item {
